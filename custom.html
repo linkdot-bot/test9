@@ -1899,7 +1899,7 @@ document.querySelectorAll('nav ul li a[href="#contact"]').forEach(contactLink =>
         
         // Only redirect if we're not already on the homepage
         if (!isHomePage()) {
-            window.location.href = 'index.html';
+            window.location.href = 'index.html#contact';
         } else {
             // If already on homepage, just scroll to contact
             scrollToContact();
@@ -1917,7 +1917,7 @@ window.addEventListener('load', function() {
 
 // Helper functions
 function isHomePage() {
-    return window.location.pathname.endsWith('index.html') || 
+    return window.location.pathname.endsWith('index.html#contact') || 
            window.location.pathname === '/' || 
            window.location.pathname.endsWith('/');
 }
