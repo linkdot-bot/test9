@@ -166,6 +166,48 @@
             text-align: center;
         }
 
+        /* Star Rating */
+.star-rating {
+    margin-top: 1rem;
+    color: gold;
+}
+
+.slider-dots {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.slider-dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.slider-dot.active {
+    background-color: var(--accent-orange);
+}
+
+/* Optional fade transition */
+.testimonial {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.testimonial.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
         
         /* Reuse your existing button styles */
         body {
@@ -1174,54 +1216,85 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="dc-testimonials">
-        <div class="container">
-            <h2 class="section-title">Client Experiences</h2>
-            <p class="section-subtitle">What our clients say about our design consultations</p>
-            
-            <div class="testimonial-cards">
-                <div class="testimonial-card">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"The consultation completely transformed how I saw my living room. The designer identified possibilities I never would have considered."</p>
-                    <div class="client-info">
-                        <div class="client-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah J.">
-                        </div>
-                        <div>
-                            <h4>Sarah J.</h4>
-                            <p>Residential Client</p>
-                        </div>
+    <!-- Testimonials Section -->
+<section class="dc-testimonials">
+    <div class="container">
+        <h2 class="section-title">Client Experiences</h2>
+        <p class="section-subtitle">What our clients say about our design consultations</p>
+
+        <div class="testimonial-cards">
+            <div class="testimonial-card testimonial active">
+                <i class="fas fa-quote-left"></i>
+                <p>"The consultation completely transformed how I saw my living room. The designer identified possibilities I never would have considered."</p>
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="client-info">
+                    <div class="client-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah J.">
+                    </div>
+                    <div>
+                        <h4>Sarah J.</h4>
+                        <p>Residential Client</p>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"Worth every penny! The detailed plan saved me from costly mistakes and helped me prioritize where to invest in my renovation."</p>
-                    <div class="client-info">
-                        <div class="client-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T.">
-                        </div>
-                        <div>
-                            <h4>Michael T.</h4>
-                            <p>Office Redesign</p>
-                        </div>
+            </div>
+
+            <div class="testimonial-card testimonial">
+                <i class="fas fa-quote-left"></i>
+                <p>"Worth every penny! The detailed plan saved me from costly mistakes and helped me prioritize where to invest in my renovation."</p>
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="client-info">
+                    <div class="client-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T.">
+                    </div>
+                    <div>
+                        <h4>Michael T.</h4>
+                        <p>Office Redesign</p>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"I was overwhelmed with choices before the consultation. Now I have a clear vision and a step-by-step plan to achieve it."</p>
-                    <div class="client-info">
-                        <div class="client-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena R.">
-                        </div>
-                        <div>
-                            <h4>Elena R.</h4>
-                            <p>Whole Home Design</p>
-                        </div>
+            </div>
+
+            <div class="testimonial-card testimonial">
+                <i class="fas fa-quote-left"></i>
+                <p>"I was overwhelmed with choices before the consultation. Now I have a clear vision and a step-by-step plan to achieve it."</p>
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="client-info">
+                    <div class="client-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena R.">
+                    </div>
+                    <div>
+                        <h4>Elena R.</h4>
+                        <p>Whole Home Design</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+        </div>
+    </div>
+</section>
+
 
     <!-- Update your CTA Section to trigger the popup -->
 <section class="dc-cta" id="book-consultation">
@@ -1600,6 +1673,32 @@
             document.body.style.overflow = 'auto';
         }
     }
+
+    
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentTestimonial = 0;
+
+    function showTestimonial(index) {
+        testimonials.forEach(t => t.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        testimonials[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentTestimonial = index;
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showTestimonial(index);
+        });
+    });
+
+    setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }, 8000);
+
+
 
         // Reuse your existing JavaScript for other functionality
     </script>
